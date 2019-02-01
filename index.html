@@ -20,6 +20,12 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+        <style>
+            img.grey {
+                -webkit-filter: grayscale(100%); /* Safari */
+                filter: grayscale(100%);
+            }
+        </style>
     </head>
 
     <body>
@@ -34,8 +40,8 @@
                         </a>
                     </div>
                     <div class="col s6 m6 l1 xl1 center-align" v-for="subItem in item.expansions">
-                        <p><img :src="subItem.image" alt="" class="responsive-img"></p>
-                        <a class="waves-effect waves-light btn green" :href="subItem.priceUrl" target="_blank">
+                        <p><img :src="subItem.image" alt="" class="responsive-img grey"></p>
+                        <a class="waves-effect waves-light btn grey" :href="subItem.priceUrl" target="_blank">
                             Kaufen
                         </a>
                     </div>
