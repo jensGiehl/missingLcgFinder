@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <title>Herr der Ringe LCG</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Finde heraus welcher Teil dir aus der Herr der Ringe LCG Reihe noch fehlt">
+        <meta name="keywords" content="BGG,Boardgames,Herr der Ringe,LCG,HDR,Lord of the rings,LOTR">
+        <meta name="author" content="Jens Giehl">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="container-fluid">                
+                    <div class="col s12" v-for="item in items">
+                        <div class="row">
+                            <div class="col s8 m6 l3 xl2">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img class="z-depth-3" :src="item.image">
+                                        <a :href="item.url" target="_blank">
+                                            <span class="btn-floating halfway-fab new badge blue">{{item.rating}}</span>
+                                        </a>
+                                        <span class="card-title">{{item.name}}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p><a class="waves-effect waves-light btn green" :href="item.priceUrl" target="_blank">Preise vergleichen</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" v-if="item.expansions">
+                            <div class="col s1 m1 l1 x1" v-for="subItem in item.expansions">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img class="z-depth-3" :src="subItem.image">
+                                        <a :href="subItem.url" target="_blank">
+                                            <span class="btn-floating halfway-fab new badge blue">{{subItem.rating}}</span>
+                                        </a>
+                                        <span class="card-title">{{subItem.name}}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p><a class="waves-effect waves-light btn green" :href="subItem.priceUrl" target="_blank">Preise vergleichen</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+
+</html>
