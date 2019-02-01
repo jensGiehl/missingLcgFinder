@@ -30,20 +30,18 @@
 
     <body>
         <div id="app">
-            <div class="container"></div>
-            <div v-for="item in items">
+            <div class="container"v-for="item in items">
                 <div class="row">
-                    <div class="col s6 m6 l1 xl1 center-align">
-                        <p><img :src="item.image" alt="" class="responsive-img"></p>
-                        <a class="waves-effect waves-light btn green" :href="item.priceUrl" target="_blank">
-                            Kaufen
-                        </a>
+                     <!--disabled as class-->
+                    <div class="col s6 m3 l3 xl3 center-align">
+                        <p><img :src="item.thumbnail" alt="" class="responsive-img z-depth-3"></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
                     </div>
-                    <div class="col s6 m6 l1 xl1 center-align" v-for="subItem in item.expansions">
-                        <p><img :src="subItem.image" alt="" class="responsive-img grey"></p>
-                        <a class="waves-effect waves-light btn grey" :href="subItem.priceUrl" target="_blank">
-                            Kaufen
-                        </a>
+                    <div class="col s6 m3 l3 xl3 center-align" v-for="subItem in item.expansions">
+                        <p><img :src="subItem.thumbnail" alt="" class="responsive-img z-depth-3"></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
                     </div>
                 </div>
             </div>
