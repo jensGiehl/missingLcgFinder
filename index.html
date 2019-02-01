@@ -30,16 +30,32 @@
 
     <body>
         <div id="app">
+            <div class="navbar-fixed">
+              <nav>
+                <div class="nav-wrapper white">
+                  <a href="#!" class="brand-logo black-text hide-on-med-and-down">{{title}}</a>
+                  <ul class="right">
+                    <li>
+                        <div class="input-field inline">
+                            <input placeholder="Hier eingeben" id="bggUsername" type="text" class="validate" v-model="bggUser">
+                            <label for="bggUsername">BGG Benutzername</label>
+                        </div>
+                    </li>
+                    <li><a class="waves-effect waves-light btn blue z-depth-3" v-on:click="bggUserSearch">Sammlung laden</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
             <div class="container"v-for="item in items">
                 <div class="row">
                      <!--disabled as class-->
                     <div class="col s6 m3 l3 xl3 center-align">
-                        <p><img :src="item.thumbnail" alt="" class="responsive-img z-depth-3"></p>
+                        <p><img :src="item.thumbnail" :alt="item.name" class="responsive-img z-depth-3"></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
                     </div>
                     <div class="col s6 m3 l3 xl3 center-align" v-for="subItem in item.expansions">
-                        <p><img :src="subItem.thumbnail" alt="" class="responsive-img z-depth-3"></p>
+                        <p><img :src="subItem.thumbnail" :alt="subItem.name" class="responsive-img z-depth-3" :class="{'grey':subItem.show == false}"></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
                     </div>
