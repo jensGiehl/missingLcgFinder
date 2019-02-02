@@ -14,7 +14,7 @@ var app = new Vue({
                 if(item.expansions) {
                     for (let j=0; j < item.expansions.length; j++) {
                         let subItem = item.expansions[j];
-                        subItem.show=false
+                        subItem.owned=false
                     } 
                 }
             }
@@ -22,7 +22,7 @@ var app = new Vue({
     },
     mounted() {
         axios
-            .get("https://api.myjson.com/bins/1h7ctg")
+            .get("https://api.myjson.com/bins/pyky4")
             .then(response => {this.items = response.data.games; this.title=response.data.title})
     }
 })
