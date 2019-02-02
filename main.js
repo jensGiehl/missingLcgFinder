@@ -4,7 +4,8 @@ var app = new Vue({
         return {
             bggUser: null,
             items: null,
-            title: null
+            title: null,
+            showOwned: true
         }
     },
     methods: {

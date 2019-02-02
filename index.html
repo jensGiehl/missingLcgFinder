@@ -31,33 +31,51 @@
     <body>
         <div id="app">
             <div class="navbar-fixed">
-              <nav>
-                <div class="nav-wrapper white">
-                  <a href="#!" class="brand-logo black-text hide-on-med-and-down">{{title}}</a>
-                  <ul class="right">
-                    <li>
-                        <div class="input-field inline">
-                            <input placeholder="Hier eingeben" id="bggUsername" type="text" class="validate" v-model="bggUser">
-                            <label for="bggUsername">BGG Benutzername</label>
-                        </div>
-                    </li>
-                    <li><a class="waves-effect waves-light btn blue z-depth-3" v-on:click="bggUserSearch">Sammlung laden</a></li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
-            <div class="container"v-for="item in items">
-                <div class="row">
-                     <!--disabled as class-->
-                    <div class="col s6 m3 l3 xl3 center-align">
-                        <p><img :src="item.thumbnail" :alt="item.name" class="responsive-img z-depth-3" :class="{'grey':!item.owned}"></p>
-                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
-                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
+                <nav>
+                    <div class="nav-wrapper white">
+                        <a href="#!" class="brand-logo black-text hide-on-med-and-down">{{title}}</a>
+                        <ul class="right">
+                            <li class="hide-on-med-and-down">
+                                <div class="switch">
+                                    <label>
+                                        Nur fehlende
+                                        <input type="checkbox" v-model="showOwned">
+                                        <span class="lever"></span>
+                                        Alle
+                                    </label>
+                                </div>
+                            </li>
+                            <li>&nbsp;&nbsp;&nbsp;</li>
+                            <li>                                
+                                <div class="input-field inline">
+                                    <input placeholder="Hier eingeben" id="bggUsername" type="text" class="validate"
+                                        v-model="bggUser">
+                                    <label for="bggUsername">BGG Benutzername</label>
+                                </div>
+                            </li>
+                            <li><a class="waves-effect waves-light btn blue z-depth-3" v-on:click="bggUserSearch">Laden</a></li>
+                        </ul>
                     </div>
-                    <div class="col s6 m3 l3 xl3 center-align" v-for="subItem in item.expansions">
-                        <p><img :src="subItem.thumbnail" :alt="subItem.name" class="responsive-img z-depth-3" :class="{'grey':!subItem.owned}"></p>
-                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.priceUrl" target="_blank" style="display:block">Kaufen</a></p>
-                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.url" target="_blank" style="display:block">BGG ({{item.rating}})</a></p>
+                </nav>
+            </div>
+            <div class="container" v-for="item in items">
+                <div class="row">
+                    <!--disabled as class-->
+                    <div class="col s6 m3 l3 xl3 center-align" :class="{'hide': !showOwned && item.owned}">
+                        <p><img :src="item.thumbnail" :alt="item.name" class="responsive-img z-depth-3"
+                                :class="{'grey':!item.owned}"></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.priceUrl" target="_blank"
+                                style="display:block" :class="{'grey':!item.owned}">Kaufen</a></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.url" target="_blank"
+                                style="display:block" :class="{'grey':!item.owned}">BGG ({{item.rating}})</a></p>
+                    </div>
+                    <div class="col s6 m3 l3 xl3 center-align" v-for="subItem in item.expansions" :class="{'hide': !showOwned && subItem.owned}">
+                        <p><img :src="subItem.thumbnail" :alt="subItem.name" class="responsive-img z-depth-3"
+                                :class="{'grey':!subItem.owned}"></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.priceUrl" target="_blank"
+                                style="display:block" :class="{'grey':!subItem.owned}">Kaufen</a></p>
+                        <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.url" target="_blank"
+                                style="display:block" :class="{'grey':!subItem.owned}">BGG ({{item.rating}})</a></p>
                     </div>
                 </div>
             </div>
