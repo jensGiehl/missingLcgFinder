@@ -11,11 +11,11 @@ var app = new Vue({
     methods: {
         bggUserSearch: function (event) {
             for (let i=0; i < this.items.length; i++) {
-                let item = this.items[i];
+                let item = this.items[i]
                 if(item.expansions) {
                     for (let j=0; j < item.expansions.length; j++) {
-                        let subItem = item.expansions[j];
-                        subItem.owned=false
+                        let subItem = item.expansions[j]
+                        subItem.owned=true
                     } 
                 }
             }
@@ -23,7 +23,7 @@ var app = new Vue({
     },
     mounted() {
         axios
-            .get("https://api.myjson.com/bins/pyky4")
+            .get("https://api.myjson.com/bins/ivuf8")
             .then(response => {this.items = response.data.games; this.title=response.data.title})
     }
 })

@@ -63,19 +63,19 @@
                     <!--disabled as class-->
                     <div class="col s6 m3 l3 xl3 center-align" :class="{'hide': !showOwned && item.owned}">
                         <p><img :src="item.thumbnail" :alt="item.name" class="responsive-img z-depth-3"
-                                :class="{'grey':!item.owned}"></p>
+                                :class="{'grey':item.owned}"></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.priceUrl" target="_blank"
-                                style="display:block" :class="{'grey':!item.owned}">Kaufen</a></p>
+                                style="display:block" :class="{'grey':item.owned}">Kaufen</a></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="item.url" target="_blank"
-                                style="display:block" :class="{'grey':!item.owned}">BGG ({{item.rating}})</a></p>
+                                style="display:block" :class="{'grey':item.owned}">BGG ({{item.rating}})</a></p>
                     </div>
                     <div class="col s6 m3 l3 xl3 center-align" v-for="subItem in item.expansions" :class="{'hide': !showOwned && subItem.owned}">
                         <p><img :src="subItem.thumbnail" :alt="subItem.name" class="responsive-img z-depth-3"
-                                :class="{'grey':!subItem.owned}"></p>
+                                :class="{'grey':subItem.owned}"></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.priceUrl" target="_blank"
-                                style="display:block" :class="{'grey':!subItem.owned}">Kaufen</a></p>
+                                style="display:block" :class="{'grey':subItem.owned}">Kaufen</a></p>
                         <p><a class="waves-effect waves-light btn green z-depth-3" :href="subItem.url" target="_blank"
-                                style="display:block" :class="{'grey':!subItem.owned}">BGG ({{item.rating}})</a></p>
+                                style="display:block" :class="{'grey':subItem.owned}">BGG ({{item.rating}})</a></p>
                     </div>
                 </div>
             </div>
